@@ -10,8 +10,8 @@ button.addEventListener("click", function () {
 
 // Show menu when menu icon is clicked
 menu.addEventListener("click", function (e) {
-  e.stopPropagation(); // Prevent body click from firing
-  listMenu.classList.remove("hidden");
+  e.stopPropagation();
+  listMenu.classList.add("show");
   menu.classList.add("hidden");
 });
 
@@ -22,14 +22,14 @@ listMenu.addEventListener("click", function (e) {
 
 // Close menu when clicking outside
 document.body.addEventListener("click", function () {
-  listMenu.classList.add("hidden");
+  listMenu.classList.remove("show");
   menu.classList.remove("hidden");
 });
 
 // Hide menu when any link is clicked
-listMenu_links.forEach(function(link) {
+listMenu_links.forEach(function (link) {
   link.addEventListener("click", function () {
-    listMenu.classList.add("hidden");
+    listMenu.classList.remove("show");
     menu.classList.remove("hidden");
   });
 });

@@ -53,18 +53,23 @@ header button {
   font-size: 40px;
 }
 header ul {
-  list-style: none;
-  height: 950px;
-  width: 400px;
-  font-size: 32px;
-  padding-right: 30px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out;
   background-color: #ff8400;
   position: absolute;
   top: 30px;
   right: 30px;
+  width: 400px;
+  height: 950px;
+  font-size: 32px;
+  padding-right: 30px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+}
+#list-menu.show {
+  max-height: 950px;
 }
 header img {
   width: 64px;
