@@ -20,7 +20,7 @@ body {
 header {
   height: 100vh;
   width: 100%;
-  background-image: url(../images/header-background1.jpg);
+  background-image: url(../images/header-background.jpg);
   background-repeat: no-repeat;
   background-position: center;
   display: flex;

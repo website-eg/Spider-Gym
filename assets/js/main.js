@@ -1,12 +1,6 @@
-let button = document.querySelector("#btn");
 let menu = document.querySelector("#menu");
 let listMenu = document.querySelector("#list-menu");
 let listMenu_links = document.querySelectorAll(".link");
-
-// Scroll down when button is clicked
-button.addEventListener("click", function () {
-  window.scrollBy({ top: 700, behavior: "smooth" });
-});
 
 // Show menu when menu icon is clicked
 menu.addEventListener("click", function (e) {
