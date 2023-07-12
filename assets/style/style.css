@@ -71,6 +71,7 @@ header #list-menu {
   justify-content: space-around;
   font-size: 40px;
   padding: 40px;
+  margin-top: 30px;
   z-index: 999;
 }
 #list-menu.show {
