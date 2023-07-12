@@ -58,7 +58,7 @@ header button {
   font-size: 40px;
 }
 header #list-menu {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   width: 300px;
