@@ -57,24 +57,24 @@ header button {
   border-style: none;
   font-size: 40px;
 }
-header ul {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease-in-out;
-  background-color: #ff8400;
-  position: absolute;
-  top: 30px;
-  right: 30px;
-  width: 400px;
+header #list-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
   height: 950px;
-  font-size: 32px;
-  padding-right: 30px;
+  background-color: #ff8400;
+  transform: translateX(100%);
+  transition: transform 0.5s ease-in-out;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  font-size: 32px;
+  padding: 30px;
+  z-index: 999;
 }
 #list-menu.show {
-  max-height: 950px;
+  transform: translateX(0);
 }
 header img {
   width: 64px;
