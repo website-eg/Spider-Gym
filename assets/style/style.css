@@ -58,7 +58,7 @@ header button {
   font-size: 40px;
 }
 header #list-menu {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   width: 300px;
@@ -69,8 +69,8 @@ header #list-menu {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  font-size: 32px;
-  padding: 30px;
+  font-size: 40px;
+  padding: 40px;
   z-index: 999;
 }
 #list-menu.show {
