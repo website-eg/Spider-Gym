@@ -12,15 +12,11 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
   background-color: black;
-}
-.container {
-  width: 900px;
-  height: 100%;
 }
 header {
   height: 770px;
+  width: 100%;
   background-image: url(../images/background-header.jpg);
   display: flex;
   flex-direction: column;
@@ -30,8 +26,8 @@ header {
 header p {
   font-size: 32px;
   position: absolute;
-  left: 50px;
-  top: 15px;
+  left: 20px;
+  top: 20px;
 }
 header p i {
   color: #ff8400;
@@ -49,16 +45,18 @@ header h1 {
   font-size: 60px;
 }
 header button {
-  width: 150px;
-  height: 45px;
+  width: 250px;
+  height: 70px;
   border-radius: 20px;
   background-color: #ff8400;
   border-style: none;
+  font-size: 40px;
 }
 header ul {
   list-style: none;
-  height: 300px;
-  width: 200px;
+  height: 500px;
+  width: 400px;
+  font-size: 32px;
   padding-right: 10px;
   background-color: #ff8400;
   position: absolute;
@@ -68,17 +66,19 @@ header ul {
   flex-direction: column;
   justify-content: space-around;
 }
+header img {
+  width: 64px;
+  height: 64px;
+}
 header #close-menu {
-  width: 32px;
-  height: 32px;
   position: absolute;
-  right: 203px;
+  right: 363px;
   top: 33px;
   z-index: 1;
 }
 .why-us {
   margin-top: 100px;
-  height: 500px;
+  font-size: 40px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -86,18 +86,21 @@ header #close-menu {
 }
 .why-us h2 {
   color: #ff8400;
+  font-size: 50px;
+  margin-bottom: 30px;
 }
 .why-us p {
-  width: 270px;
+  width: 500px;
+  margin-top: 20px;
 }
 .why-us p i {
   color: #ff8400;
   width: 32px;
   height: 32px;
+  margin-left: 20px;
 }
 .prices {
   margin-top: 100px;
-  height: 400px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -105,26 +108,29 @@ header #close-menu {
 }
 .prices h2 {
   color: #ff8400;
+  font-size: 50px;
+  margin-bottom: 50px;
 }
 .prices .prices-divs {
-  width: 500px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 .prices .prices-divs div {
-  margin: 0 10px;
+  margin: 0 30px;
   background-color: #ff8400;
-  height: 300px;
-  width: 200px;
+  height: 500px;
+  width: 350px;
   border-radius: 20px;
   p {
     text-align: center;
     margin-top: 5px;
+    font-size: 40px;
   }
   ul {
+    font-size: 35px;
     box-shadow: 0 0 10px black inset;
-    height: 205px;
+    height: 310px;
     margin-top: 25px;
     padding-top: 25px;
   }
@@ -134,20 +140,50 @@ header #close-menu {
   padding: 0 100px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   h2 {
     padding-bottom: 50px;
     color: #ff8400;
+    font-size: 50px;
+  }
+  p {
+    font-size: 40px;
+    text-align: center;
   }
 }
 .about-images {
   margin-top: 50px;
   border: 10px solid #ff8400;
-  height: 350px;
-  width: 350px;
+  height: 550px;
+  width: 550px;
   overflow: scroll;
   overscroll-behavior-inline: contain;
 }
 .about-images img {
-  width: 350px;
+  width: 545px;
+}
+footer {
+  font-size: 40px;
+  margin: 100px 0px;
+  p {
+    text-align: center;
+    margin: 10px 0px;
+  }
+}
+.social {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+footer .social i {
+  width: 64px;
+  height: 64px;
+  color: #ff8400;
+  border: 5px solid #ff8400;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
