@@ -35,8 +35,8 @@ header p i {
   height: 32px;
 }
 header #menu {
-  width: 32px;
-  height: 32px;
+  width: 55px;
+  height: 55px;
   position: absolute;
   right: 30px;
   top: 30px;
@@ -69,12 +69,6 @@ header ul {
 header img {
   width: 64px;
   height: 64px;
-}
-header #close-menu {
-  position: absolute;
-  right: 363px;
-  top: 33px;
-  z-index: 1;
 }
 .why-us {
   margin-top: 100px;
