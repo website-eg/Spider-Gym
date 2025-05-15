@@ -186,8 +186,9 @@ footer {
   align-items: center;
 }
 footer .social i {
-  width: 64px;
-  height: 64px;
+  font-size: 60px;
+  width: 100px;
+  height: 100px;
   color: #ff8400;
   border: 5px solid #ff8400;
   border-radius: 50%;
