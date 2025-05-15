@@ -1,0 +1,153 @@
+* {
+  font-family: "Bree Serif", sans-serif;
+  text-decoration: none;
+  line-height: 1.6;
+  color: #fff;
+  margin: 0;
+}
+.hidden {
+  display: none;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  background-color: black;
+}
+.container {
+  width: 900px;
+  height: 100%;
+}
+header {
+  height: 770px;
+  background-image: url(../images/background-header.jpg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+header p {
+  font-size: 32px;
+  position: absolute;
+  left: 50px;
+  top: 15px;
+}
+header p i {
+  color: #ff8400;
+  width: 32px;
+  height: 32px;
+}
+header #menu {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  right: 30px;
+  top: 30px;
+}
+header h1 {
+  font-size: 60px;
+}
+header button {
+  width: 150px;
+  height: 45px;
+  border-radius: 20px;
+  background-color: #ff8400;
+  border-style: none;
+}
+header ul {
+  list-style: none;
+  height: 300px;
+  width: 200px;
+  padding-right: 10px;
+  background-color: #ff8400;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+header #close-menu {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  right: 203px;
+  top: 33px;
+  z-index: 1;
+}
+.why-us {
+  margin-top: 100px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.why-us h2 {
+  color: #ff8400;
+}
+.why-us p {
+  width: 270px;
+}
+.why-us p i {
+  color: #ff8400;
+  width: 32px;
+  height: 32px;
+}
+.prices {
+  margin-top: 100px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.prices h2 {
+  color: #ff8400;
+}
+.prices .prices-divs {
+  width: 500px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.prices .prices-divs div {
+  margin: 0 10px;
+  background-color: #ff8400;
+  height: 300px;
+  width: 200px;
+  border-radius: 20px;
+  p {
+    text-align: center;
+    margin-top: 5px;
+  }
+  ul {
+    box-shadow: 0 0 10px black inset;
+    height: 205px;
+    margin-top: 25px;
+    padding-top: 25px;
+  }
+}
+.about-us {
+  margin-top: 100px;
+  padding: 0 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h2 {
+    padding-bottom: 50px;
+    color: #ff8400;
+  }
+}
+.about-images {
+  margin-top: 50px;
+  border: 10px solid #ff8400;
+  height: 350px;
+  width: 350px;
+  overflow: scroll;
+  overscroll-behavior-inline: contain;
+}
+.about-images img {
+  width: 350px;
+}
