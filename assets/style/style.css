@@ -54,10 +54,10 @@ header button {
 }
 header ul {
   list-style: none;
-  height: 600px;
+  height: 750px;
   width: 300px;
   font-size: 32px;
-  padding-right: 10px;
+  padding-right: 30px;
   background-color: #ff8400;
   position: absolute;
   top: 30px;
@@ -77,6 +77,9 @@ header img {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+}
+.why-us div {
+  height: 500px;
 }
 .why-us h2 {
   color: #ff8400;
@@ -163,13 +166,13 @@ header img {
 .about-images {
   margin-top: 50px;
   border: 10px solid #ff8400;
-  height: 650px;
-  width: 650px;
+  height: 700px;
+  width: 700px;
   overflow: scroll;
   overscroll-behavior-inline: contain;
 }
 .about-images img {
-  width: 650px;
+  width: 700px;
 }
 footer {
   font-size: 40px;
