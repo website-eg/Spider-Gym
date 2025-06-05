@@ -9,7 +9,7 @@ exports.addTrainer = async (req, res) => {
   const { name, specialty, image } = req.body;
   const newTrainer = new Trainer({ name, specialty, image });
   await newTrainer.save();
-  res.json({ message: 'تمت إضافة المدرب' });
+  res.json({ message: 'تم إضافة المدرب' });
 };
 
 exports.deleteTrainer = async (req, res) => {
