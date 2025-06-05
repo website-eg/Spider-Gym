@@ -139,7 +139,7 @@
     <h2>الاشتراكات</h2>
     <form id="addSubscriptionForm">
       <input type="text" id="subName" placeholder="اسم الاشتراك" required />
-      <input type="number" id="subPrice" placeholder="السعر" required />
+      <input type="number" id="subPrice" placeholder="السعر" required min="0" />
       <input type="text" id="subDuration" placeholder="مدة الاشتراك (شهور)" required />
       <button type="submit">إضافة اشتراك</button>
     </form>
@@ -160,13 +160,16 @@
   <button class="logout-btn" id="logoutBtn">تسجيل خروج</button>
 
   <script>
-    // تأكد وجود التوكن وإلا اذهب لصفحة الدخول
     const token = localStorage.getItem('token');
+
     if (!token) {
+      // إذا لم يكن هناك توكن، أعد التوجيه إلى صفحة تسجيل الدخول
       window.location.href = 'login.html';
     }
 
-    // --- جلب المدربين ---
+    // --- وظائف جلب البيانات وعرضها ---
+
+    // عرض المدربين
     const trainerList = document.getElementById('trainerList');
     async function fetchTrainers() {
       try {
@@ -176,11 +179,11 @@
         if (!res.ok) throw new Error('فشل تحميل المدربين');
         const trainers = await res.json();
         trainerList.innerHTML = '';
-        trainers.forEach(t => {
+        trainers.forEach(({ _id, name, specialty }) => {
           const li = document.createElement('li');
           li.innerHTML = `
-            <span>${t.name} - ${t.specialty}</span>
-            <button data-id="${t._id}">حذف</button>
+            <span>${name} - ${specialty}</span>
+            <button data-id="${_id}" aria-label="حذف المدرب ${name}">حذف</button>
           `;
           trainerList.appendChild(li);
         });
@@ -189,28 +192,32 @@
       }
     }
 
+    // حذف مدرب عند الضغط على زر الحذف
     trainerList.addEventListener('click', async (e) => {
       if (e.target.tagName === 'BUTTON') {
         const id = e.target.getAttribute('data-id');
         if (confirm('هل تريد حذف هذا المدرب؟')) {
           try {
-            await fetch(`http://localhost:5000/admin/trainers/${id}`, {
+            const res = await fetch(`http://localhost:5000/admin/trainers/${id}`, {
               method: 'DELETE',
               headers: { Authorization: 'Bearer ' + token },
             });
+            if (!res.ok) throw new Error('فشل حذف المدرب');
             fetchTrainers();
-          } catch {
-            alert('فشل حذف المدرب');
+          } catch (error) {
+            alert(error.message);
           }
         }
       }
     });
 
+    // إضافة مدرب جديد
     document.getElementById('addTrainerForm').addEventListener('submit', async e => {
       e.preventDefault();
       const name = document.getElementById('name').value.trim();
       const specialty = document.getElementById('specialty').value.trim();
       const image = document.getElementById('image').value.trim();
+
       try {
         const res = await fetch('http://localhost:5000/admin/trainers', {
           method: 'POST',
@@ -228,7 +235,7 @@
       }
     });
 
-    // --- جلب الاشتراكات ---
+    // عرض الاشتراكات
     const subscriptionList = document.getElementById('subscriptionList');
     async function fetchSubscriptions() {
       try {
@@ -238,11 +245,11 @@
         if (!res.ok) throw new Error('فشل تحميل الاشتراكات');
         const subscriptions = await res.json();
         subscriptionList.innerHTML = '';
-        subscriptions.forEach(sub => {
+        subscriptions.forEach(({ _id, name, price, duration }) => {
           const li = document.createElement('li');
           li.innerHTML = `
-            <span>${sub.name} - ${sub.price} ريال - ${sub.duration} شهر</span>
-            <button data-id="${sub._id}">حذف</button>
+            <span>${name} - ${price} ريال - ${duration} شهر</span>
+            <button data-id="${_id}" aria-label="حذف الاشتراك ${name}">حذف</button>
           `;
           subscriptionList.appendChild(li);
         });
@@ -251,28 +258,32 @@
       }
     }
 
+    // حذف اشتراك
     subscriptionList.addEventListener('click', async (e) => {
       if (e.target.tagName === 'BUTTON') {
         const id = e.target.getAttribute('data-id');
         if (confirm('هل تريد حذف هذا الاشتراك؟')) {
           try {
-            await fetch(`http://localhost:5000/admin/subscriptions/${id}`, {
+            const res = await fetch(`http://localhost:5000/admin/subscriptions/${id}`, {
               method: 'DELETE',
               headers: { Authorization: 'Bearer ' + token },
             });
+            if (!res.ok) throw new Error('فشل حذف الاشتراك');
             fetchSubscriptions();
-          } catch {
-            alert('فشل حذف الاشتراك');
+          } catch (error) {
+            alert(error.message);
           }
         }
       }
     });
 
+    // إضافة اشتراك جديد
     document.getElementById('addSubscriptionForm').addEventListener('submit', async e => {
       e.preventDefault();
       const name = document.getElementById('subName').value.trim();
-      const price = +document.getElementById('subPrice').value;
+      const price = Number(document.getElementById('subPrice').value);
       const duration = document.getElementById('subDuration').value.trim();
+
       try {
         const res = await fetch('http://localhost:5000/admin/subscriptions', {
           method: 'POST',
@@ -290,7 +301,7 @@
       }
     });
 
-    // --- جلب الأخبار ---
+    // عرض الأخبار
     const newsList = document.getElementById('newsList');
     async function fetchNews() {
       try {
@@ -300,12 +311,11 @@
         if (!res.ok) throw new Error('فشل تحميل الأخبار');
         const news = await res.json();
         newsList.innerHTML = '';
-        news.forEach(item => {
+        news.forEach(({ _id, title, content }) => {
           const li = document.createElement('li');
           li.innerHTML = `
-            <strong>${item.title}</strong>
-            <p>${item.content}</p>
-            <button data-id="${item._id}">حذف</button>
+            <span><strong>${title}</strong> - ${content}</span>
+            <button data-id="${_id}" aria-label="حذف الخبر ${title}">حذف</button>
           `;
           newsList.appendChild(li);
         });
@@ -314,27 +324,31 @@
       }
     }
 
+    // حذف خبر
     newsList.addEventListener('click', async (e) => {
       if (e.target.tagName === 'BUTTON') {
         const id = e.target.getAttribute('data-id');
         if (confirm('هل تريد حذف هذا الخبر؟')) {
           try {
-            await fetch(`http://localhost:5000/admin/news/${id}`, {
+            const res = await fetch(`http://localhost:5000/admin/news/${id}`, {
               method: 'DELETE',
               headers: { Authorization: 'Bearer ' + token },
             });
+            if (!res.ok) throw new Error('فشل حذف الخبر');
             fetchNews();
-          } catch {
-            alert('فشل حذف الخبر');
+          } catch (error) {
+            alert(error.message);
           }
         }
       }
     });
 
+    // إضافة خبر جديد
     document.getElementById('addNewsForm').addEventListener('submit', async e => {
       e.preventDefault();
       const title = document.getElementById('newsTitle').value.trim();
       const content = document.getElementById('newsContent').value.trim();
+
       try {
         const res = await fetch('http://localhost:5000/admin/news', {
           method: 'POST',
@@ -352,16 +366,18 @@
       }
     });
 
-    // تسجيل الخروج
+    // زر تسجيل الخروج
     document.getElementById('logoutBtn').addEventListener('click', () => {
       localStorage.removeItem('token');
       window.location.href = 'login.html';
     });
 
-    // تحميل البيانات عند فتح الصفحة
-    fetchTrainers();
-    fetchSubscriptions();
-    fetchNews();
+    // تحميل البيانات عند تحميل الصفحة
+    window.addEventListener('DOMContentLoaded', () => {
+      fetchTrainers();
+      fetchSubscriptions();
+      fetchNews();
+    });
   </script>
 </body>
 </html>
