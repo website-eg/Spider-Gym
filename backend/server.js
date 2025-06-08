@@ -10,7 +10,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// اتصال بقاعدة البيانات
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -18,7 +17,6 @@ mongoose.connect(process.env.MONGO_URI, {
 .then(() => console.log('تم الاتصال بقاعدة البيانات MongoDB'))
 .catch(err => console.error('خطأ في الاتصال بقاعدة البيانات:', err));
 
-// نماذج البيانات
 
 // Admin
 const AdminSchema = new mongoose.Schema({
@@ -39,7 +37,7 @@ const Trainer = mongoose.model('Trainer', TrainerSchema);
 const SubscriptionSchema = new mongoose.Schema({
   title: { type: String, required: true },
   price: { type: Number, required: true },
-  duration: { type: String, required: true }, // مثال: "1 شهر", "6 شهور"
+  duration: { type: String, required: true }, 
   description: { type: String, required: false },
 });
 const Subscription = mongoose.model('Subscription', SubscriptionSchema);
