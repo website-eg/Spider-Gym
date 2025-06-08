@@ -122,7 +122,6 @@
     <h1>لوحة تحكم الإدارة</h1>
   </header>
 
-  <!-- قسم المدربين -->
   <section id="trainersSection">
     <h2>المدربين</h2>
     <form id="addTrainerForm">
@@ -134,7 +133,6 @@
     <ul id="trainerList"></ul>
   </section>
 
-  <!-- قسم الاشتراكات -->
   <section id="subscriptionsSection">
     <h2>الاشتراكات</h2>
     <form id="addSubscriptionForm">
@@ -146,7 +144,6 @@
     <ul id="subscriptionList"></ul>
   </section>
 
-  <!-- قسم الأخبار -->
   <section id="newsSection">
     <h2>الأخبار</h2>
     <form id="addNewsForm">
@@ -163,13 +160,10 @@
     const token = localStorage.getItem('token');
 
     if (!token) {
-      // إذا لم يكن هناك توكن، أعد التوجيه إلى صفحة تسجيل الدخول
       window.location.href = 'login.html';
     }
 
-    // --- وظائف جلب البيانات وعرضها ---
 
-    // عرض المدربين
     const trainerList = document.getElementById('trainerList');
     async function fetchTrainers() {
       try {
@@ -192,7 +186,6 @@
       }
     }
 
-    // حذف مدرب عند الضغط على زر الحذف
     trainerList.addEventListener('click', async (e) => {
       if (e.target.tagName === 'BUTTON') {
         const id = e.target.getAttribute('data-id');
@@ -211,7 +204,6 @@
       }
     });
 
-    // إضافة مدرب جديد
     document.getElementById('addTrainerForm').addEventListener('submit', async e => {
       e.preventDefault();
       const name = document.getElementById('name').value.trim();
@@ -235,7 +227,6 @@
       }
     });
 
-    // عرض الاشتراكات
     const subscriptionList = document.getElementById('subscriptionList');
     async function fetchSubscriptions() {
       try {
@@ -258,7 +249,6 @@
       }
     }
 
-    // حذف اشتراك
     subscriptionList.addEventListener('click', async (e) => {
       if (e.target.tagName === 'BUTTON') {
         const id = e.target.getAttribute('data-id');
@@ -277,7 +267,6 @@
       }
     });
 
-    // إضافة اشتراك جديد
     document.getElementById('addSubscriptionForm').addEventListener('submit', async e => {
       e.preventDefault();
       const name = document.getElementById('subName').value.trim();
@@ -301,7 +290,6 @@
       }
     });
 
-    // عرض الأخبار
     const newsList = document.getElementById('newsList');
     async function fetchNews() {
       try {
@@ -324,7 +312,6 @@
       }
     }
 
-    // حذف خبر
     newsList.addEventListener('click', async (e) => {
       if (e.target.tagName === 'BUTTON') {
         const id = e.target.getAttribute('data-id');
@@ -343,7 +330,6 @@
       }
     });
 
-    // إضافة خبر جديد
     document.getElementById('addNewsForm').addEventListener('submit', async e => {
       e.preventDefault();
       const title = document.getElementById('newsTitle').value.trim();
@@ -366,13 +352,11 @@
       }
     });
 
-    // زر تسجيل الخروج
     document.getElementById('logoutBtn').addEventListener('click', () => {
       localStorage.removeItem('token');
       window.location.href = 'login.html';
     });
 
-    // تحميل البيانات عند تحميل الصفحة
     window.addEventListener('DOMContentLoaded', () => {
       fetchTrainers();
       fetchSubscriptions();
